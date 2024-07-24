@@ -1,9 +1,10 @@
 import streamlit as st
-
 from pic2pix import convert
 import io
-st.title('Pic2Pix Front End')
 
+st.title('Pic2Pix Streamlit Front End')
+
+# File uploader
 uploaded_file = st.file_uploader("Choose an image...", type=["png", "jpg", "jpeg", "gif"])
 
 # Taken from pic2pix.py to create a default palette
@@ -33,10 +34,12 @@ PALETTE = [
     [48, 15, 10]
 ]
 
+# Run if the file is uploaded
 if uploaded_file is not None:
     img = convert(uploaded_file, PALETTE)
     
     if img is not None:
+        # Uses the BytesIO object to store the image for download
         with io.BytesIO() as buffer:
             img_byte_arr = io.BytesIO()
             img.save(img_byte_arr, format='PNG')
@@ -46,4 +49,5 @@ if uploaded_file is not None:
                     file_name="sprite.png",
                     mime="image/png"
                 )
-        st.image(img, use_column_width=True)
+        # And show the image too
+        st.image(img, use_column_width=False)

@@ -1,7 +1,7 @@
 import streamlit as st
 
 from pic2pix import convert
-
+import io
 st.title('Pic2Pix Front End')
 
 uploaded_file = st.file_uploader("Choose an image...", type=["png", "jpg", "jpeg", "gif"])
@@ -36,13 +36,14 @@ PALETTE = [
 if uploaded_file is not None:
     img = convert(uploaded_file, PALETTE)
     
-
     if img is not None:
-        if st.button("Download Image"):
+        with io.BytesIO() as buffer:
+            img_byte_arr = io.BytesIO()
+            img.save(img_byte_arr, format='PNG')
             st.download_button(
-                label="Download",
-                data=img,
-                file_name="sprite.png",
-                mime="image/png"
-            )
+                    label="Download",
+                    data=img_byte_arr,
+                    file_name="sprite.png",
+                    mime="image/png"
+                )
         st.image(img, use_column_width=True)

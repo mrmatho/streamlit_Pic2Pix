@@ -125,7 +125,7 @@ def convert(source_img_path,palette = ''):
         elif type(palette) == list:
             averaged_values = palette
             
-        final = apply_palette(fin, averaged_values)
+        final = apply_palette(finished_product, averaged_values)
         return final
 
     

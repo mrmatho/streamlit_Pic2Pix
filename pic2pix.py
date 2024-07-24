@@ -125,11 +125,13 @@ def convert(source_img_path,palette = ''):
         elif type(palette) == list:
             averaged_values = palette
             
-        apply_palette(fin, averaged_values)
+        final = apply_palette(fin, averaged_values)
+        return final
 
-    cor_img.save('corrected_img.png')
-    fin.save('walk5.png')
-    pass
+    
+    #cor_img.save('corrected_img.png')
+    #fin.save('walk5.png')
+    
 
 
 
@@ -162,9 +164,7 @@ def apply_palette(img,palette):
     
     recolored_img = Image.fromarray(np_copy_array)
     recolored_img.show()
-    recolored_img.save('Sprited.png')
-
-    pass
+    return recolored_img
 
 
 

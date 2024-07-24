@@ -2,9 +2,9 @@ import streamlit as st
 
 from pic2pix import convert
 
-st.title('Pix2Pix')
+st.title('Pic2Pix Front End')
 
-uploaded_file = st.file_uploader("Choose an image...", type="jpg")
+uploaded_file = st.file_uploader("Choose an image...", type=["png", "jpg", "jpeg", "gif"])
 
 # Taken from pic2pix.py to create a default palette
 PALETTE = [
@@ -35,4 +35,14 @@ PALETTE = [
 
 if uploaded_file is not None:
     img = convert(uploaded_file, PALETTE)
-    st.image(img, use_column_width=True)
+    
+
+    if img is not None:
+        if st.button("Download Image"):
+            st.download_button(
+                label="Download",
+                data=img,
+                file_name="sprite.png",
+                mime="image/png"
+            )
+        st.image(img, use_column_width=True)

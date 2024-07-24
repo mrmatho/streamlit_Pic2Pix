@@ -65,7 +65,7 @@ def convert(source_img_path,palette = ''):
                     
         trp_img = Image.fromarray(np_img)
         trp_img.save('transparency_test2.png') #png has transparency
-        trp_img.show()
+        #trp_img.show()
         if 'pencil' in source_img_path:
             sys.exit()
 
@@ -93,7 +93,7 @@ def convert(source_img_path,palette = ''):
         con_plus = ImageEnhance.Contrast(fin)
         finished_product = con_plus.enhance(1.3)
 
-        finished_product.show()
+        #finished_product.show()
 
     if palette: #Open palette sample image and store its values in an numpy array for later application
         
@@ -163,7 +163,7 @@ def apply_palette(img,palette):
                 np_copy_array[i][j] = brr
     
     recolored_img = Image.fromarray(np_copy_array)
-    recolored_img.show()
+    #recolored_img.show()
     return recolored_img
 
 

@@ -1,5 +1,10 @@
-# Pic2Pix
-A script to process pictures/drawings of people to turn them into sprites usable in 2d game engines like GameMaker
+# A Streamlit Front-end for Pic2Pix
+Building a streamlit front-end onto a script to process pictures/drawings of people to turn them into sprites usable in 2d game engines like GameMaker. Builds on the [Pic2Pix](https://github.com/BobDev94/Pic2Pix) work from [BobDev94](https://github.com/BobDev94)
+
+## The front-end part
+I have put a very simple Streamlit front-end onto the script and made small modifications to the script so that instead of saving to disk it presents the output as a PIL Image and io.ByteStream for download from the Streamlit webapp. 
+
+## What the script does
 
 A basic demo of what you can expect this script to do: Please note that the script expects the part to be extracted to be in the middle of the image. It samples the edges to determine the range of pixels to be filtered out, so if the edge corners are covered by the parts to be extracted, you'll have issues. 
 
